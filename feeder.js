@@ -61,4 +61,4 @@ function feeder(request, response) {
 
 // START THE HTTP SERVER
 http.createServer(feeder).listen(bind);
-console.log('Started feeder server on port ' + port);
+console.log('Started feeder server on ' + bind);
