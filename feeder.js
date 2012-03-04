@@ -1,5 +1,5 @@
 // CONFIG
-var port = 8888; // port to bind the http server to
+var bind = '/tmp/feeder_node.socket'; // port or socket
 
 // INCLUDES
 var http = require ('http'),
@@ -60,5 +60,5 @@ function feeder(request, response) {
 }
 
 // START THE HTTP SERVER
-http.createServer(feeder).listen(port);
+http.createServer(feeder).listen(bind);
 console.log('Started feeder server on port ' + port);
