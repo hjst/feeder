@@ -21,8 +21,7 @@ function feeder(request, response) {
     // return 404 for anything we can't handle
     _log('Returning 404 for ' + _req.path);
     response.writeHead(404, {'Content-Type': 'text/plain'});
-    response.write('404 - not found');
-    response.end();
+    response.end('404 - not found');
   } else {
     // we have a /get request, now validate the feed url
     var feed_url = url.parse(request.url, true).query.feed;
@@ -33,8 +32,7 @@ function feeder(request, response) {
     ) {
       _log('Returning 400 for ' + _req.path);
       response.writeHead(400, {'Content-Type': 'text/plain'});
-      response.write('400 - invalid request');
-      response.end();
+      response.end('400 - invalid request');
     } else {
       // reasonably sure we have a valid feedburner url, so process
       _log('Request for feed: ' + feed_url);
