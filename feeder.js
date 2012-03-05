@@ -44,15 +44,7 @@ function feeder(request, response) {
       };
       http.get(options, function(fb_res) {
         response.writeHead(fb_res.statusCode, '', fb_res.headers);
-        fb_res.setEncoding('utf8');
-        fb_res.on('data', function(chunk) {
-          // write the chunked fb response data to our own respose
-          response.write(chunk, 'utf8');
-        });
-        fb_res.on('end', function() {
-          // close our response when there's no more fb data
-          response.end();
-        });
+        fb_res.pipe(response);
       }).on('error', function(e) {
         _log('ERROR: ' + e.message);
       });
